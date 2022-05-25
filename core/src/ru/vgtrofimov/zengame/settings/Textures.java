@@ -10,7 +10,7 @@ public class Textures {
     public Textures() {
         Texture load = new Texture("png/image_pack.png");
 
-        unit = getTextureRegionFromMap(0, 0, 64, 64, false, true, load);
+        unit = getTextureRegionFromMap(192, 0, 64, 64, false, true, load);
     }
 
     private TextureRegion getTextureRegionFromMap(int x, int y, int width, int height, boolean flipX, boolean flipY, Texture texture) {
