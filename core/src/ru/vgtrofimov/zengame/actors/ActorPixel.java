@@ -40,7 +40,7 @@ public class ActorPixel extends Actor {
         if (getRotation() > 360) setRotation(0);
 
 
-        if (getWidth() > 0) {
+        if (getWidth() > 1) {
             setWidth(getWidth() - 3 * delta);
             setHeight(getWidth());
         } else {
@@ -52,6 +52,10 @@ public class ActorPixel extends Actor {
 
         setY(getY() + moveDown * delta);
         moveDown *= 0.993f;
+
+        if (colorRGB.r + colorRGB.g + colorRGB.b + colorRGB.a == 0) {
+            setEnabled(false);
+        }
 
     }
 

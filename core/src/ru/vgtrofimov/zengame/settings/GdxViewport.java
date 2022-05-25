@@ -1,9 +1,13 @@
 package ru.vgtrofimov.zengame.settings;
 
+import com.badlogic.gdx.Gdx;
+
 public class GdxViewport {
 
     public static final float WORLD_WIDTH = 1024;
     public static final float WORLD_HEIGHT = 2048f;
+
+
     public static final float FIXED_BLOCK = WORLD_WIDTH / 25;
     public static float TOP;
     public static float BOTTOM;

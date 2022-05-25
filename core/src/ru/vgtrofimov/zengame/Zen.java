@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import ru.vgtrofimov.zengame.screens.ZenScreen;
+import ru.vgtrofimov.zengame.services.Sound;
 import ru.vgtrofimov.zengame.settings.GdxViewport;
 import ru.vgtrofimov.zengame.settings.Setup;
 import ru.vgtrofimov.zengame.settings.Textures;
@@ -22,17 +23,23 @@ public class Zen extends ApplicationAdapter {
 
 	ZenScreen zenScreen;
 	Textures textures;
+	Setup setup;
+	Sound sound;
 	// private AssetManager manager;
 
 	@Override
 	public void create () {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, GdxViewport.WORLD_WIDTH, GdxViewport.WORLD_HEIGHT);
-		viewport = new FillViewport(GdxViewport.WORLD_WIDTH, GdxViewport.WORLD_WIDTH * ((float) Gdx.graphics.getHeight() / Gdx.graphics.getWidth()), camera);
+		GdxViewport.HEIGHT = GdxViewport.WORLD_WIDTH * ((float) Gdx.graphics.getHeight() / Gdx.graphics.getWidth());
+		viewport = new FillViewport(GdxViewport.WORLD_WIDTH, GdxViewport.HEIGHT, camera);
+
+		setup = new Setup();
+		sound = new Sound(setup);
 
 		textures = new Textures();
 
-		zenScreen = new ZenScreen(viewport, camera, textures);
+		zenScreen = new ZenScreen(viewport, camera, setup, sound, textures);
 	}
 
 	public static void log(String nameClass, String msg) {

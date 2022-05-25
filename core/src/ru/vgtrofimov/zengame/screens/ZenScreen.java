@@ -8,7 +8,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import ru.vgtrofimov.zengame.services.Sound;
+import ru.vgtrofimov.zengame.settings.Setup;
 import ru.vgtrofimov.zengame.settings.Textures;
+import ru.vgtrofimov.zengame.stages.MenuStage;
 import ru.vgtrofimov.zengame.stages.StageParent;
 import ru.vgtrofimov.zengame.stages.ZenStage;
 
@@ -16,25 +19,37 @@ public class ZenScreen implements Screen {
 
     Viewport viewport;
     OrthographicCamera camera;
+    Setup setup;
+    Sound sound;
     Textures textures;
     // AssetManager manager;
 
     StageParent stage;
 
 
-    public ZenScreen(Viewport viewport, OrthographicCamera camera, Textures textures) {
+    public ZenScreen(Viewport viewport, OrthographicCamera camera, Setup setup, Sound sound, Textures textures) {
         this.viewport = viewport;
         this.camera = camera;
+        this.setup = setup;
+        this.sound = sound;
         this.textures = textures;
 
-        setGameStage();
+        // setGameStage();
+        setMenuStage();
     }
 
     public void setGameStage() {
         stage = null;
-        stage = new ZenStage(this, viewport, camera, textures);
+        stage = new ZenStage(this, viewport, camera, setup, sound, textures);
         Gdx.input.setInputProcessor(stage);
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
+    }
+
+    public void setMenuStage() {
+        stage = null;
+        stage = new MenuStage(this, viewport, camera, setup, sound, textures);
+        Gdx.input.setInputProcessor(stage);
+        Gdx.input.setCatchKey(Input.Keys.BACK, false);
     }
 
     @Override

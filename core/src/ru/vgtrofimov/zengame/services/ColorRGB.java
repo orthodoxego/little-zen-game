@@ -27,7 +27,7 @@ public class ColorRGB {
     }
 
     private float transformColor(float color, float increase, float delta) {
-        if (color >= 0 && color <= 1) {
+        if (color > 0 && color < 1) {
             color += increase * delta;
         }
         if (color < 0) color = 0;
