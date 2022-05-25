@@ -7,6 +7,7 @@ import ru.vgtrofimov.zengame.settings.Setup;
 
 public class Sound {
 
+
     public enum SOUND { TIBET,
         MENU
     };
@@ -55,6 +56,10 @@ public class Sound {
             music.setLooping(true);
             music.play();
         }
+    }
+
+    public void stopMusic() {
+        if (music != null) music.stop();
     }
 
     public void dispose() {

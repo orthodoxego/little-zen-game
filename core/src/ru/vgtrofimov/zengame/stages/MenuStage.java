@@ -10,12 +10,13 @@ import ru.vgtrofimov.zengame.actors.ActorMenu;
 import ru.vgtrofimov.zengame.actors.GroupActor;
 import ru.vgtrofimov.zengame.screens.ZenScreen;
 import ru.vgtrofimov.zengame.services.ColorRGB;
+import ru.vgtrofimov.zengame.services.ReturnKey;
 import ru.vgtrofimov.zengame.services.Sound;
 import ru.vgtrofimov.zengame.settings.GdxViewport;
 import ru.vgtrofimov.zengame.settings.Setup;
 import ru.vgtrofimov.zengame.settings.Textures;
 
-public class MenuStage extends StageParent implements InputProcessor {
+public class MenuStage extends StageParent implements InputProcessor, ReturnKey {
 
     public enum MENU { START, SOUND, MUSIC, INSTRUCTION }
 
@@ -24,6 +25,8 @@ public class MenuStage extends StageParent implements InputProcessor {
 
     public MenuStage(ZenScreen zenScreen, Viewport viewport, OrthographicCamera camera, Setup setup, Sound sound, Textures textures) {
         super(zenScreen, viewport, camera, setup, sound, textures);
+
+        sound.stopMusic();
 
         int y = (int) (camera.viewportHeight / 2 - 64 * 3);
 
@@ -62,6 +65,7 @@ public class MenuStage extends StageParent implements InputProcessor {
                 zenScreen.setGameStage();
                 break;
             case INSTRUCTION:
+                zenScreen.setInstructionStage();
                 break;
             case SOUND:
                 if (setup.getVolume() > 0)

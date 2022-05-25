@@ -11,9 +11,14 @@ public class Textures {
     TextureRegion[] unit;
 
     TextureRegion start, sound, music, instruction;
+    TextureRegion instructionText;
 
     public Textures() {
-        Texture load = new Texture("png/image_pack.png");
+
+        Texture load = new Texture("png/help.png");
+        instructionText = getTextureRegionFromMap(0, 0, 512, 768, false, true, load);
+
+        load = new Texture("png/image_pack.png");
 
         unit = new TextureRegion[8];
         Vector<TextureRegion> tmp = new Vector<>();
@@ -29,6 +34,7 @@ public class Textures {
         sound = getTextureRegionFromMap(0, 128, 128, 64, false, true, load);
         music = getTextureRegionFromMap(0, 192, 128, 64, false, true, load);
         instruction = getTextureRegionFromMap(128, 64, 192, 64, false, true, load);
+
 
     }
 
@@ -56,5 +62,9 @@ public class Textures {
 
     public TextureRegion getInstruction() {
         return instruction;
+    }
+
+    public TextureRegion getInstructionText() {
+        return instructionText;
     }
 }

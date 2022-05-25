@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import ru.vgtrofimov.zengame.services.Sound;
 import ru.vgtrofimov.zengame.settings.Setup;
 import ru.vgtrofimov.zengame.settings.Textures;
+import ru.vgtrofimov.zengame.stages.InstructionStage;
 import ru.vgtrofimov.zengame.stages.MenuStage;
 import ru.vgtrofimov.zengame.stages.StageParent;
 import ru.vgtrofimov.zengame.stages.ZenStage;
@@ -36,6 +37,7 @@ public class ZenScreen implements Screen {
 
         // setGameStage();
         setMenuStage();
+        // setInstructionStage();
     }
 
     public void setGameStage() {
@@ -48,6 +50,13 @@ public class ZenScreen implements Screen {
     public void setMenuStage() {
         stage = null;
         stage = new MenuStage(this, viewport, camera, setup, sound, textures);
+        Gdx.input.setInputProcessor(stage);
+        Gdx.input.setCatchKey(Input.Keys.BACK, false);
+    }
+
+    public void setInstructionStage() {
+        stage = null;
+        stage = new InstructionStage(this, viewport, camera, setup, sound, textures);
         Gdx.input.setInputProcessor(stage);
         Gdx.input.setCatchKey(Input.Keys.BACK, false);
     }

@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import ru.vgtrofimov.zengame.services.ReturnKey;
 import ru.vgtrofimov.zengame.stages.MenuStage;
 
-public class ActorMenu extends Actor {
+public class ActorInstruction extends Actor {
 
     ReturnKey returnKey;
     TextureRegion textureRegion;
@@ -18,7 +18,7 @@ public class ActorMenu extends Actor {
     MenuStage.MENU menu;
     int texture_x;
 
-    public ActorMenu(final ReturnKey returnKey, TextureRegion textureRegion, boolean enabled, final MenuStage.MENU menu, int y, int width_screen) {
+    public ActorInstruction(final ReturnKey returnKey, TextureRegion textureRegion, boolean enabled, final MenuStage.MENU menu, int y, int width_screen) {
         this.returnKey = returnKey;
         this.textureRegion = textureRegion;
         this.enabled = enabled;
