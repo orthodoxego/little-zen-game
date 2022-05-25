@@ -62,8 +62,8 @@ public class ZenStage extends StageParent implements InputProcessor {
     }
 
     public void addUnit(int x, int y, int count) {
-        radius += 8 * Gdx.graphics.getDeltaTime();
-        if (radius > 64) radius = 64;
+        radius += 2 * Gdx.graphics.getDeltaTime();
+        if (radius > 128) radius = 128;
 
         switch (count) {
             case 3:

@@ -16,6 +16,7 @@ public class ActorPixel extends Actor {
     float moveDown;
 
     boolean enabled;
+    float rotate = 0;
 
     public ActorPixel(GroupActor groupActor, TextureRegion textureRegion, ColorRGB colorRGB, int x, int y, int width) {
         this.groupActor = groupActor;
@@ -34,6 +35,10 @@ public class ActorPixel extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
+
+        setRotation(getRotation() + 45 * delta);
+        if (getRotation() > 360) setRotation(0);
+
 
         if (getWidth() > 0) {
             setWidth(getWidth() - 3 * delta);
