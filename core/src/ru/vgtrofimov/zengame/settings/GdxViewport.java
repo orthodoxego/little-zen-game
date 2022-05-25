@@ -10,7 +10,7 @@ public class GdxViewport {
     public static float HEIGHT;
     public static float RATIO, RATIO_HORIZONTAL, RATIO_VERTICAL;
 
-    public static void resize(int width, int height) {
+    public static void resize(float width, float height) {
 
         RATIO_HORIZONTAL = (float) WORLD_WIDTH / width;
         RATIO_VERTICAL = (float) WORLD_HEIGHT / height;

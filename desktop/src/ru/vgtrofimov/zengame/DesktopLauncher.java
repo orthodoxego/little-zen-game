@@ -10,7 +10,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 
 		int width = 1200, height = 2640;
-		float ratio = 0.35f;
+		float ratio = 0.5f;
 
 		config.setWindowedMode((int) (width * ratio), (int) (height * ratio));
 

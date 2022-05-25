@@ -29,8 +29,8 @@ public class GroupActor extends Group {
 
     }
 
-    public void addActor(ColorRGB colorRGB, int x, int y, int width) {
-        actorPixels.add(new ActorPixel(this, textures.getUnit(), colorRGB, x, y, width));
+    public void addUnit(ColorRGB colorRGB, int x, int y, int width, int numberUnit) {
+        actorPixels.add(new ActorPixel(this, textures.getUnit()[numberUnit], colorRGB, x, y, width));
         addActor(actorPixels.lastElement());
     }
 

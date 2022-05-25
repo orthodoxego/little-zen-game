@@ -1,19 +1,19 @@
 package ru.vgtrofimov.zengame.actors;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import java.awt.Rectangle;
-
 import ru.vgtrofimov.zengame.services.ColorRGB;
+import ru.vgtrofimov.zengame.settings.GdxViewport;
 
 public class ActorPixel extends Actor {
 
     GroupActor groupActor;
     TextureRegion textureRegion;
     ColorRGB colorRGB;
-    float moveDown = 300;
+    float moveDown;
 
     boolean enabled;
 
@@ -27,6 +27,8 @@ public class ActorPixel extends Actor {
         setRotation(0);
         setScale(1, 1);
         enabled = true;
+        moveDown = 100;
+        if (y > (Gdx.graphics.getHeight() / 2) * GdxViewport.RATIO_VERTICAL) moveDown *= -1;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class ActorPixel extends Actor {
         super.act(delta);
 
         if (getWidth() > 0) {
-            setWidth(getWidth() - 10 * delta);
+            setWidth(getWidth() - 3 * delta);
             setHeight(getWidth());
         } else {
             setEnabled(false);
@@ -52,10 +54,15 @@ public class ActorPixel extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.setColor(colorRGB.r, colorRGB.g, colorRGB.b, colorRGB.a);
-        batch.draw(textureRegion, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
-
-        batch.setColor(1, 1, 1, parentAlpha);
+        if (getWidth() < 10 && Math.random() * 100 < 35) {
+//            batch.setColor(colorRGB.r, colorRGB.g, colorRGB.b, colorRGB.a);
+//            batch.draw(textureRegion, getX() + getWidth() / 2, getY() + getHeight() / 2, getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+//            batch.setColor(1, 1, 1, parentAlpha);
+        } else {
+            batch.setColor(colorRGB.r, colorRGB.g, colorRGB.b, colorRGB.a);
+            batch.draw(textureRegion, getX() + getWidth() / 2, getY() + getHeight() / 2, getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+            batch.setColor(1, 1, 1, parentAlpha);
+        }
     }
 
     public boolean isEnabled() {

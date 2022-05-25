@@ -5,12 +5,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Textures {
 
-    TextureRegion unit;
+    TextureRegion[] unit;
 
     public Textures() {
         Texture load = new Texture("png/image_pack.png");
 
-        unit = getTextureRegionFromMap(192, 0, 64, 64, false, true, load);
+        unit = new TextureRegion[8];
+        for (int i = 0; i < 8; i++) {
+            unit[i] = getTextureRegionFromMap(i * 64, 0, 64, 64, false, true, load);
+        }
     }
 
     private TextureRegion getTextureRegionFromMap(int x, int y, int width, int height, boolean flipX, boolean flipY, Texture texture) {
@@ -19,7 +22,7 @@ public class Textures {
         return tr;
     }
 
-    public TextureRegion getUnit() {
+    public TextureRegion[] getUnit() {
         return unit;
     }
 }

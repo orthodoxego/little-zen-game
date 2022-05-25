@@ -54,38 +54,106 @@ public class ZenStage extends StageParent implements InputProcessor {
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        radius += 10 * Gdx.graphics.getDeltaTime();
-        // int radius = 96;
-//        screenX -= radius / 2;
-//        screenY -= radius / 2;
-        // Zen.log((int) (screenX * GdxViewport.RATIO_HORIZONTAL) + " " + (int) (screenY * GdxViewport.RATIO_VERTICAL));
-        if (countFrame % 2 == 0) {
-            groupActor.addActor(new ColorRGB(1, 1, 1, 1,
-                    -0.1f, -0.02f, -0.5f, -0.1f),
-                    (int) (screenX * GdxViewport.RATIO_HORIZONTAL),
-                    (int) (screenY * GdxViewport.RATIO_VERTICAL),
-                    (int) radius);
-            groupActor.addActor(new ColorRGB(1, 1, 1, 1,
-                            -0.1f, -0.02f, -0.5f, -0.1f),
-                    (int) (screenX * GdxViewport.RATIO_HORIZONTAL),
-                    (int) (Gdx.graphics.getHeight() * GdxViewport.RATIO_VERTICAL - screenY * GdxViewport.RATIO_VERTICAL),
-                    (int) radius);
 
-//            screenX -= radius;
-//            screenY -= radius;
-            groupActor.addActor(new ColorRGB(1, 1, 1, 1,
-                            -0.1f, -0.02f, -0.5f, -0.1f),
-                    (int) (Gdx.graphics.getWidth() * GdxViewport.RATIO_HORIZONTAL) - (int) (screenX * GdxViewport.RATIO_HORIZONTAL),
-
-                    (int) (screenY * GdxViewport.RATIO_VERTICAL),
-                    (int) radius);
-            groupActor.addActor(new ColorRGB(1, 1, 1, 1,
-                            -0.1f, -0.02f, -0.5f, -0.1f),
-                    (int) (Gdx.graphics.getWidth() * GdxViewport.RATIO_HORIZONTAL) - (int) (screenX * GdxViewport.RATIO_HORIZONTAL),
-
-                    (int) (Gdx.graphics.getHeight() * GdxViewport.RATIO_VERTICAL - screenY * GdxViewport.RATIO_VERTICAL),
-                    (int) radius);
+        if (countFrame % 1 == 0) {
+            addUnit(screenX, screenY, 3);
         }
         return super.touchDragged(screenX, screenY, pointer);
+    }
+
+    public void addUnit(int x, int y, int count) {
+        radius += 8 * Gdx.graphics.getDeltaTime();
+        if (radius > 64) radius = 64;
+
+        switch (count) {
+            case 3:
+                groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                                -0.1f, -0.02f, -0.5f, -0.11f),
+                        (int) (x * GdxViewport.RATIO_HORIZONTAL - radius),
+                        (int) (y * GdxViewport.RATIO_VERTICAL - radius),
+                        (int) radius,
+                        count);
+                addUnit(x, y, count - 1);
+                break;
+            case 2:
+                groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                                -0.3f, -0.01f, -0.1f, -0.1f),
+                        (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius),
+                        (int) (y * GdxViewport.RATIO_VERTICAL - radius),
+                        (int) radius,
+                        count);
+                addUnit(x, y, count - 1);
+                break;
+            case 1:
+                groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                                -0.4f, -0.1f, -0.1f, -0.09f),
+                        (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius),
+                        (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius),
+                        (int) radius,
+                        count);
+                addUnit(x, y, count - 1);
+                break;
+            case 0:
+                groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                                -0.05f, -0.01f, -0.03f, -0.08f),
+                        (int) (x * GdxViewport.RATIO_HORIZONTAL - radius),
+                        (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius),
+                        (int) radius,
+                        count);
+                addUnit(x, y, count - 1);
+                break;
+            case -1:
+                addSinCos(x, y, 7);
+                break;
+        }
+        addSinCos(x, y, 7);
+    }
+
+    public void addSinCos(int x, int y, int count) {
+        if (count == 7) {
+            int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL - radius);
+            int thisY = (int) (y * GdxViewport.RATIO_VERTICAL - radius);
+            Zen.log("" + Math.sin(thisX));
+            groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                            -0.4f, -0.1f, -0.1f, -0.09f),
+                    (int) (Math.sin(thisX) * 100 + thisX),
+                    (int) (Math.cos(thisY) * 100 + thisY),
+                    (int) 7,
+                    count);
+            addSinCos(x, y, count - 1);
+        } else if (count == 6) {
+            int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL - radius);
+            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius);
+            Zen.log("" + Math.sin(thisX));
+            groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                            -0.4f, -0.1f, -0.1f, -0.09f),
+                    (int) (Math.sin(thisX) * 100 + thisX),
+                    (int) (Math.cos(thisY) * 100 + thisY),
+                    (int) 7,
+                    count);
+            addSinCos(x, y, count - 1);
+        } else if (count == 5) {
+            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius);
+            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius);
+            Zen.log("" + Math.sin(thisX));
+            groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                            -0.4f, -0.1f, -0.1f, -0.09f),
+                    (int) (Math.sin(thisX) * 100 + thisX),
+                    (int) (Math.cos(thisY) * 100 + thisY),
+                    (int) 7,
+                    count);
+            addSinCos(x, y, count - 1);
+        } else if (count == 4) {
+            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius);
+            int thisY = (int) (y * GdxViewport.RATIO_VERTICAL - radius);
+            Zen.log("" + Math.sin(thisX));
+            groupActor.addUnit(new ColorRGB(1, 1, 1, 1,
+                            -0.4f, -0.1f, -0.1f, -0.09f),
+                    (int) (Math.sin(thisX) * 100 + thisX),
+                    (int) (Math.cos(thisY) * 100 + thisY),
+                    (int) 7,
+                    count);
+            addSinCos(x, y, count - 1);
+        }
     }
 }
