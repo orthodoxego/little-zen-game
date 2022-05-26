@@ -14,7 +14,7 @@ public class Sound {
 
 
     Setup setup;
-    int maxSound = 10;
+    int maxSound = 20;
     public com.badlogic.gdx.audio.Sound[] soundMelody;
 
     Music music;
@@ -28,7 +28,14 @@ public class Sound {
         soundMelody[2] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet03.ogg"));
         soundMelody[3] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet04.ogg"));
         soundMelody[4] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet05.ogg"));
-        soundMelody[5] = Gdx.audio.newSound(Gdx.files.internal("sound/menu.ogg"));
+        soundMelody[5] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet06.ogg"));
+        soundMelody[6] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet07.ogg"));
+        soundMelody[7] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet08.ogg"));
+        soundMelody[8] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet09.ogg"));
+        soundMelody[9] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet10.ogg"));
+        soundMelody[10] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet11.ogg"));
+        soundMelody[11] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet12.ogg"));
+        soundMelody[19] = Gdx.audio.newSound(Gdx.files.internal("sound/menu.ogg"));
 
     }
 
@@ -38,11 +45,11 @@ public class Sound {
         switch (sound) {
             case TIBET:
                 // soundMelody[0].stop();
-                int num = (int) (Math.random() * 5);
-                soundMelody[num].play(0.01f * setup.getVolume());
+                int num = (int) (Math.random() * 12);
+                soundMelody[num].play(0.01f * setup.getVolume() * 0.8f);
                 break;
             case MENU:
-                soundMelody[5].play(0.01f * setup.getVolume() * 0.75f);
+                soundMelody[19].play(0.01f * setup.getVolume() * 0.6f);
                 break;
         }
 

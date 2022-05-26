@@ -70,7 +70,7 @@ public class ActorPixel extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        if (getWidth() < 10 && Math.random() * 100 < 35) {
+        if (getWidth() < 15 && Math.random() * 100 < 35) {
 //            batch.setColor(colorRGB.r, colorRGB.g, colorRGB.b, colorRGB.a);
 //            batch.draw(textureRegion, getX() + getWidth() / 2, getY() + getHeight() / 2, getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 //            batch.setColor(1, 1, 1, parentAlpha);
