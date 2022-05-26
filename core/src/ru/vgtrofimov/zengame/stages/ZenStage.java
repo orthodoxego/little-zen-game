@@ -27,7 +27,9 @@ public class ZenStage extends StageParent implements InputProcessor {
     int max_radius;
 
     int time_for_sound = 0;
+    int time_for_bells = 0;
     float count_time_for_sound;
+    float count_time_for_bells;
 
     public ZenStage(ZenScreen zenScreen, Viewport viewport, OrthographicCamera camera, Setup setup, Sound sound, Textures textures) {
         super(zenScreen, viewport, camera, setup, sound, textures);
@@ -39,6 +41,7 @@ public class ZenStage extends StageParent implements InputProcessor {
         touch = false;
         max_radius = 128;
         count_time_for_sound = 0;
+        count_time_for_bells = 0;
 
         sound.playMusic();
     }
@@ -53,6 +56,7 @@ public class ZenStage extends StageParent implements InputProcessor {
         }
 
         count_time_for_sound += delta;
+        count_time_for_bells += delta;
 
         countFrame += 1;
         if (countFrame > 10000) countFrame = 0;
@@ -80,6 +84,15 @@ public class ZenStage extends StageParent implements InputProcessor {
             time_for_sound = 10;
             count_time_for_sound = 0;
         }
+
+        // sound.play(Sound.SOUND.BELLS);
+
+        if (count_time_for_bells > time_for_bells) {
+            sound.play(Sound.SOUND.BELLS);
+            time_for_bells = 8;
+            count_time_for_bells = 0;
+        }
+
         return true;
     }
 

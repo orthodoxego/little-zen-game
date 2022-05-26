@@ -9,6 +9,7 @@ public class Sound {
 
 
     public enum SOUND { TIBET,
+        BELLS,
         MENU
     };
 
@@ -35,6 +36,11 @@ public class Sound {
         soundMelody[9] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet10.ogg"));
         soundMelody[10] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet11.ogg"));
         soundMelody[11] = Gdx.audio.newSound(Gdx.files.internal("sound/tibet12.ogg"));
+        soundMelody[12] = Gdx.audio.newSound(Gdx.files.internal("sound/bells01.ogg"));
+        soundMelody[13] = Gdx.audio.newSound(Gdx.files.internal("sound/bells02.ogg"));
+        soundMelody[14] = Gdx.audio.newSound(Gdx.files.internal("sound/bells03.ogg"));
+        soundMelody[15] = Gdx.audio.newSound(Gdx.files.internal("sound/bells04.ogg"));
+        soundMelody[16] = Gdx.audio.newSound(Gdx.files.internal("sound/bells05.ogg"));
         soundMelody[19] = Gdx.audio.newSound(Gdx.files.internal("sound/menu.ogg"));
 
     }
@@ -42,11 +48,17 @@ public class Sound {
     public boolean play(SOUND sound) {
         if (!(setup.getVolume() > 0)) return false;
 
+        int num = 0;
         switch (sound) {
             case TIBET:
                 // soundMelody[0].stop();
-                int num = (int) (Math.random() * 12);
-                soundMelody[num].play(0.01f * setup.getVolume() * 0.6f);
+                num = (int) (Math.random() * 12);
+                soundMelody[num].play(0.01f * setup.getVolume() * 0.4f);
+                break;
+            case BELLS:
+                // soundMelody[0].stop();
+                num = (int) (12 + Math.random() * 5);
+                soundMelody[num].play(0.01f * setup.getVolume() * 0.4f);
                 break;
             case MENU:
                 soundMelody[19].play(0.01f * setup.getVolume() * 0.7f);
