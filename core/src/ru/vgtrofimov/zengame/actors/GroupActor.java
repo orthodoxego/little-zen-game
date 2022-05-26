@@ -1,9 +1,11 @@
 package ru.vgtrofimov.zengame.actors;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 import java.util.Vector;
 
+import ru.vgtrofimov.zengame.Zen;
 import ru.vgtrofimov.zengame.services.ColorRGB;
 import ru.vgtrofimov.zengame.settings.Textures;
 import ru.vgtrofimov.zengame.stages.ZenStage;
@@ -29,9 +31,10 @@ public class GroupActor extends Group {
 
     }
 
-    public void addUnit(ColorRGB colorRGB, int x, int y, int width, int numberUnit) {
-        actorPixels.add(new ActorPixel(this, textures.getUnit()[numberUnit], colorRGB, x, y, width));
+    public void addUnit(ColorRGB colorRGB, int x, int y, int width, int numberUnit, int num) {
+        actorPixels.add(new ActorPixel(this, textures.getUnit()[numberUnit], colorRGB, x, y, width, num));
         addActor(actorPixels.lastElement());
+        // Zen.log("Len " + actorPixels.size());
     }
 
     public void deleteActor(ActorPixel actorPixel) {
@@ -39,3 +42,4 @@ public class GroupActor extends Group {
         actorPixels.removeElement(actorPixel);
     }
 }
+

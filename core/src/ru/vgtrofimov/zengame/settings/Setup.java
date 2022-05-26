@@ -5,7 +5,7 @@ import com.badlogic.gdx.Preferences;
 
 public class Setup {
 
-    public static final String APP_ID = "ZENGAME";
+    public static final String APP_ID = "ZENRELAX";
     public static final String FONT_CHARS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyzАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;:,{}\"´`'<>";
     public static boolean pause = false;
 

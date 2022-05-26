@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import ru.vgtrofimov.zengame.Zen;
 import ru.vgtrofimov.zengame.services.ColorRGB;
 import ru.vgtrofimov.zengame.settings.GdxViewport;
 
@@ -17,11 +18,13 @@ public class ActorPixel extends Actor {
 
     boolean enabled;
     float rotate = 0;
+    int num;
 
-    public ActorPixel(GroupActor groupActor, TextureRegion textureRegion, ColorRGB colorRGB, int x, int y, int width) {
+    public ActorPixel(GroupActor groupActor, TextureRegion textureRegion, ColorRGB colorRGB, int x, int y, int width, int num) {
         this.groupActor = groupActor;
         this.textureRegion = textureRegion;
         this.colorRGB = colorRGB;
+        this.num = num;
         setX(x); setY(y);
         setWidth(width); setHeight(width);
         setOrigin(getWidth() / 2, getHeight() / 2);
@@ -57,6 +60,10 @@ public class ActorPixel extends Actor {
             setEnabled(false);
         }
 
+        if (colorRGB.a <= 0.02f) {
+            setEnabled(false);
+        }
+
     }
 
     @Override
@@ -79,7 +86,17 @@ public class ActorPixel extends Actor {
     }
 
     public void setEnabled(boolean enabled) {
-        if (!enabled) groupActor.deleteActor(this);
+        if (!enabled) {
+            groupActor.deleteActor(this);
+        }
         this.enabled = enabled;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 }

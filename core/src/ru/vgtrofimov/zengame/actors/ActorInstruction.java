@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
 import ru.vgtrofimov.zengame.services.ReturnKey;
+import ru.vgtrofimov.zengame.settings.GdxViewport;
 import ru.vgtrofimov.zengame.stages.MenuStage;
 
 public class ActorInstruction extends Actor {
@@ -27,9 +28,9 @@ public class ActorInstruction extends Actor {
         setWidth(textureRegion.getRegionWidth());
         setHeight(textureRegion.getRegionHeight());
         texture_x = (width_screen - textureRegion.getRegionWidth() * 2) / 2;
-        setY(y);
+        setY((GdxViewport.WORLD_HEIGHT - textureRegion.getRegionHeight() * 2) / 2);
         setOrigin(0, 0);
-        setBounds(0, y, width_screen, getHeight() * 2);
+        setBounds(0, getY(), width_screen, getHeight() * 2);
         setRotation(0); setScale(1, 1);
 
         setTouchable(Touchable.enabled);

@@ -59,24 +59,27 @@ public class MenuStage extends StageParent implements InputProcessor, ReturnKey 
     }
 
     public void press_key(MENU menu) {
-        sound.play(Sound.SOUND.MENU);
         switch (menu) {
             case START:
+                sound.play(Sound.SOUND.MENU);
                 zenScreen.setGameStage();
                 break;
             case INSTRUCTION:
+                sound.play(Sound.SOUND.MENU);
                 zenScreen.setInstructionStage();
                 break;
             case SOUND:
                 if (setup.getVolume() > 0)
                     setup.setVolume(0);
                 else
-                    setup.setVolume(75);
+                    setup.setVolume(100);
                 sound_menu.setEnabled(setup.getVolume() > 0);
+                sound.play(Sound.SOUND.MENU);
                 break;
             case MUSIC:
                 setup.setMusic(!setup.isMusic());
                 music_menu.setEnabled(setup.isMusic());
+                sound.play(Sound.SOUND.MENU);
                 break;
         }
     }

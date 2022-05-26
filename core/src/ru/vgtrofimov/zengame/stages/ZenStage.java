@@ -93,9 +93,9 @@ public class ZenStage extends StageParent implements InputProcessor {
     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
         touch = true;
-        if (countFrame % 2 == 0) {
-            addUnit(screenX, screenY, 3);
-        }
+        // if (countFrame % 10 == 0) {
+        addUnit(screenX, screenY, 3);
+        // }
         return super.touchDragged(screenX, screenY, pointer);
     }
 
@@ -111,7 +111,8 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) (x * GdxViewport.RATIO_HORIZONTAL - radius),
                         (int) (y * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
-                        count);
+                        count,
+                        1);
                 addUnit(x, y, count - 1);
                 break;
             case 2:
@@ -120,7 +121,8 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius),
                         (int) (y * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
-                        count);
+                        count,
+                        2);
                 addUnit(x, y, count - 1);
                 break;
             case 1:
@@ -129,7 +131,8 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius),
                         (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
-                        count);
+                        count,
+                        3);
                 addUnit(x, y, count - 1);
                 break;
             case 0:
@@ -138,7 +141,8 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) (x * GdxViewport.RATIO_HORIZONTAL - radius),
                         (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
-                        count);
+                        count,
+                        4);
                 addUnit(x, y, count - 1);
                 break;
             case -1:
@@ -150,44 +154,56 @@ public class ZenStage extends StageParent implements InputProcessor {
 
     public void addSinCos(int x, int y, int count) {
         if (count == 7) {
-            int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL - radius);
-            int thisY = (int) (y * GdxViewport.RATIO_VERTICAL - radius);
+             int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL);
+             int thisY = (int) (y * GdxViewport.RATIO_VERTICAL);
+            // int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL - radius);
+            // int thisY = (int) (y * GdxViewport.RATIO_VERTICAL - radius);
             groupActor.addUnit(new ColorRGB(0.05f, 0.99f, 0.99f, 0.99f,
                             0.4f, -0.1f, -0.1f, -0.05f),
                     (int) (Math.sin(thisX) * 100 + thisX),
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
-                    count);
+                    count,
+                    5);
             addSinCos(x, y, count - 1);
         } else if (count == 6) {
-            int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL - radius);
-            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius);
+            int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL);
+            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL);
+//            int thisX = (int) (x * GdxViewport.RATIO_HORIZONTAL - radius);
+//            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius);
             groupActor.addUnit(new ColorRGB(0.99f, 0.99f, 0.1f, 0.99f,
                             -0.4f, -0.1f, 0.1f, -0.02f),
                     (int) (Math.sin(thisX) * 100 + thisX),
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
-                    count);
+                    count,
+                    6);
             addSinCos(x, y, count - 1);
         } else if (count == 5) {
-            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius);
-            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius);
+            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL);
+            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL);
+//            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius);
+//            int thisY = (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius);
             groupActor.addUnit(new ColorRGB(0.99f, 0.1f, 0.99f, 0.99f,
                             -0.4f, 0.03f, -0.1f, -0.05f),
                     (int) (Math.sin(thisX) * 100 + thisX),
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
-                    count);
+                    count,
+                    7);
             addSinCos(x, y, count - 1);
         } else if (count == 4) {
-            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius);
-            int thisY = (int) (y * GdxViewport.RATIO_VERTICAL - radius);
+            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL);
+            int thisY = (int) (y * GdxViewport.RATIO_VERTICAL);
+//            int thisX = (int) ((Gdx.graphics.getWidth() - x) * GdxViewport.RATIO_HORIZONTAL - radius);
+//            int thisY = (int) (y * GdxViewport.RATIO_VERTICAL - radius);
             groupActor.addUnit(new ColorRGB(0.99f, 0.99f, 0.99f, 0.99f,
                             -0.4f, -0.02f, -0.1f, -0.05f),
                     (int) (Math.sin(thisX) * 100 + thisX),
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
-                    count);
+                    count,
+                    8);
             addSinCos(x, y, count - 1);
         }
     }

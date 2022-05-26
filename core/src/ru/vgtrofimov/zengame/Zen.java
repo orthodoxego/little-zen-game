@@ -68,4 +68,10 @@ public class Zen extends ApplicationAdapter {
 		viewport.update(width, height);
 		GdxViewport.resize(width, height);
 	}
+
+	@Override
+	public void pause() {
+		super.pause();
+		setup.savePrefs();
+	}
 }

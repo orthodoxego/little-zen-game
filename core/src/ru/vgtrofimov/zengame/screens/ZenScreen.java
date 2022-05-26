@@ -58,7 +58,7 @@ public class ZenScreen implements Screen {
         stage = null;
         stage = new InstructionStage(this, viewport, camera, setup, sound, textures);
         Gdx.input.setInputProcessor(stage);
-        Gdx.input.setCatchKey(Input.Keys.BACK, false);
+        Gdx.input.setCatchKey(Input.Keys.BACK, true);
     }
 
     @Override
