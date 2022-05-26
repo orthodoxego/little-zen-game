@@ -9,6 +9,7 @@ import java.util.Vector;
 public class Textures {
 
     TextureRegion[] unit;
+    Vector<TextureRegion> unit_for_shuffle;
 
     TextureRegion start, sound, music, instruction;
     TextureRegion instructionText;
@@ -21,14 +22,12 @@ public class Textures {
         load = new Texture("png/image_pack.png");
 
         unit = new TextureRegion[8];
-        Vector<TextureRegion> tmp = new Vector<>();
+        unit_for_shuffle = new Vector<>();
         for (int i = 0; i < 8; i++) {
-            tmp.add(getTextureRegionFromMap(i * 64, 0, 64, 64, false, true, load));
+            unit_for_shuffle.add(getTextureRegionFromMap(i * 64, 0, 64, 64, false, true, load));
         }
-        Collections.shuffle(tmp);
-        for (int i = 0; i < tmp.size(); i++) {
-            unit[i] = tmp.elementAt(i);
-        }
+
+        shuffleUnit();
 
         start = getTextureRegionFromMap(0, 64, 128, 64, false, true, load);
         sound = getTextureRegionFromMap(0, 128, 128, 64, false, true, load);
@@ -66,5 +65,12 @@ public class Textures {
 
     public TextureRegion getInstructionText() {
         return instructionText;
+    }
+
+    public void shuffleUnit() {
+        Collections.shuffle(unit_for_shuffle);
+        for (int i = 0; i < unit_for_shuffle.size(); i++) {
+            unit[i] = unit_for_shuffle.elementAt(i);
+        }
     }
 }

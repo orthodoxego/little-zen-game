@@ -41,6 +41,7 @@ public class ZenScreen implements Screen {
     }
 
     public void setGameStage() {
+        // textures.shuffleUnit();
         stage = null;
         stage = new ZenStage(this, viewport, camera, setup, sound, textures);
         Gdx.input.setInputProcessor(stage);
