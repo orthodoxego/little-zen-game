@@ -31,8 +31,8 @@ public class GroupActor extends Group {
 
     }
 
-    public void addUnit(ColorRGB colorRGB, int x, int y, int width, int numberUnit, int num) {
-        actorPixels.add(new ActorPixel(this, textures.getUnit()[numberUnit], colorRGB, x, y, width, num));
+    public void addUnit(ColorRGB colorRGB, int x, int y, int width, int numberUnit, float rotation, int num) {
+        actorPixels.add(new ActorPixel(this, textures.getUnit()[numberUnit], colorRGB, x, y, width, rotation, num));
         addActor(actorPixels.lastElement());
         // Zen.log("Len " + actorPixels.size());
     }

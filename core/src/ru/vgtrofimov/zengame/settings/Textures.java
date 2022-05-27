@@ -16,23 +16,30 @@ public class Textures {
 
     public Textures() {
 
-        Texture load = new Texture("png/help.png");
+        Texture load = new Texture("png/menu.png");
+        start = getTextureRegionFromMap(0, 0, 128, 64, false, true, load);
+        sound = getTextureRegionFromMap(128, 0, 128, 64, false, true, load);
+        music = getTextureRegionFromMap(0, 64, 128, 64, false, true, load);
+        instruction = getTextureRegionFromMap(0, 192, 192, 64, false, true, load);
+
+        load = new Texture("png/help.png");
         instructionText = getTextureRegionFromMap(0, 0, 512, 768, false, true, load);
 
         load = new Texture("png/image_pack.png");
 
         unit = new TextureRegion[8];
+
+        int[] rnd_y = {0, 64}; //, 128, 192};
+        int y = rnd_y[(int) (Math.random() * rnd_y.length)];
+        y = 0;
+
         unit_for_shuffle = new Vector<>();
         for (int i = 0; i < 8; i++) {
-            unit_for_shuffle.add(getTextureRegionFromMap(i * 64, 0, 64, 64, false, true, load));
+            unit_for_shuffle.add(getTextureRegionFromMap(i * 64, y, 64, 64, false, true, load));
         }
 
         shuffleUnit();
 
-        start = getTextureRegionFromMap(0, 64, 128, 64, false, true, load);
-        sound = getTextureRegionFromMap(0, 128, 128, 64, false, true, load);
-        music = getTextureRegionFromMap(0, 192, 128, 64, false, true, load);
-        instruction = getTextureRegionFromMap(128, 64, 192, 64, false, true, load);
 
 
     }

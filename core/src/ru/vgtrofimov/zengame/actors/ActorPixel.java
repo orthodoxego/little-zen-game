@@ -20,7 +20,7 @@ public class ActorPixel extends Actor {
     float rotate = 0;
     int num;
 
-    public ActorPixel(GroupActor groupActor, TextureRegion textureRegion, ColorRGB colorRGB, int x, int y, int width, int num) {
+    public ActorPixel(GroupActor groupActor, TextureRegion textureRegion, ColorRGB colorRGB, int x, int y, int width, float rotation, int num) {
         this.groupActor = groupActor;
         this.textureRegion = textureRegion;
         this.colorRGB = colorRGB;
@@ -28,7 +28,7 @@ public class ActorPixel extends Actor {
         setX(x); setY(y);
         setWidth(width); setHeight(width);
         setOrigin(getWidth() / 2, getHeight() / 2);
-        setRotation(0);
+        setRotation(rotation);
         setScale(1, 1);
         enabled = true;
         moveDown = 100;

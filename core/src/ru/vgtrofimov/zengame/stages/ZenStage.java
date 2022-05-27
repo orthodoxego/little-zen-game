@@ -30,6 +30,7 @@ public class ZenStage extends StageParent implements InputProcessor {
     int time_for_bells = 0;
     float count_time_for_sound;
     float count_time_for_bells;
+    float rotation;
 
     public ZenStage(ZenScreen zenScreen, Viewport viewport, OrthographicCamera camera, Setup setup, Sound sound, Textures textures) {
         super(zenScreen, viewport, camera, setup, sound, textures);
@@ -42,6 +43,7 @@ public class ZenStage extends StageParent implements InputProcessor {
         max_radius = 128;
         count_time_for_sound = 0;
         count_time_for_bells = 0;
+        rotation = 0;
 
         sound.playMusic();
     }
@@ -54,6 +56,11 @@ public class ZenStage extends StageParent implements InputProcessor {
             radius -= decrease_radius * delta;
             if (radius < 10) radius = 10;
         }
+
+//        if (touch) {
+//            rotation += 45 * delta;
+//            if (rotation > 360) rotation = 0;
+//        }
 
         count_time_for_sound += delta;
         count_time_for_bells += delta;
@@ -122,6 +129,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) (y * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
                         count,
+                        rotation,
                         1);
                 addUnit(x, y, count - 1);
                 break;
@@ -132,6 +140,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) (y * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
                         count,
+                        rotation,
                         2);
                 addUnit(x, y, count - 1);
                 break;
@@ -142,6 +151,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
                         count,
+                        rotation,
                         3);
                 addUnit(x, y, count - 1);
                 break;
@@ -152,6 +162,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                         (int) ((Gdx.graphics.getHeight() - y) * GdxViewport.RATIO_VERTICAL - radius),
                         (int) radius,
                         count,
+                        rotation,
                         4);
                 addUnit(x, y, count - 1);
                 break;
@@ -174,6 +185,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
                     count,
+                    rotation,
                     5);
             addSinCos(x, y, count - 1);
         } else if (count == 6) {
@@ -187,6 +199,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
                     count,
+                    rotation,
                     6);
             addSinCos(x, y, count - 1);
         } else if (count == 5) {
@@ -200,6 +213,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
                     count,
+                    rotation,
                     7);
             addSinCos(x, y, count - 1);
         } else if (count == 4) {
@@ -213,6 +227,7 @@ public class ZenStage extends StageParent implements InputProcessor {
                     (int) (Math.cos(thisY) * 100 + thisY),
                     (int) 10,
                     count,
+                    rotation,
                     8);
             addSinCos(x, y, count - 1);
         }

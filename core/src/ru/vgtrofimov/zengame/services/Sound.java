@@ -48,7 +48,7 @@ public class Sound {
     public boolean play(SOUND sound) {
         if (!(setup.getVolume() > 0)) return false;
 
-        int num = 0;
+        int num;
         switch (sound) {
             case TIBET:
                 // soundMelody[0].stop();
