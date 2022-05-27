@@ -53,14 +53,14 @@ public class Sound {
             case TIBET:
                 // soundMelody[0].stop();
                 num = (int) (Math.random() * 12);
-                soundMelody[num].play(0.01f * setup.getVolume() * 0.6f);
+                soundMelody[num].play(0.01f * setup.getVolume() * 0.8f);
                 break;
             case BELLS:
                 num = (int) (12 + Math.random() * 5);
-                soundMelody[num].play(0.01f * setup.getVolume() * 0.4f);
+                soundMelody[num].play(0.01f * setup.getVolume() * 0.5f);
                 break;
             case MENU:
-                soundMelody[19].play(0.01f * setup.getVolume() * 0.3f);
+                soundMelody[19].play(0.01f * setup.getVolume() * 0.8f);
                 break;
         }
 
@@ -70,7 +70,7 @@ public class Sound {
     public void playMusic() {
         music = Gdx.audio.newMusic(Gdx.files.internal("sound/music.mp3"));
         if (setup.isMusic()) {
-            music.setVolume(0.01f * setup.getVolume() * 3);
+            music.setVolume(0.4f);
             music.setLooping(true);
             music.play();
         }
