@@ -84,14 +84,11 @@ public class ZenStage extends StageParent implements InputProcessor {
             time_for_sound = 10;
             count_time_for_sound = 0;
         }
-
-        // sound.play(Sound.SOUND.BELLS);
-
-        if (count_time_for_bells > time_for_bells) {
-            sound.play(Sound.SOUND.BELLS);
-            time_for_bells = 8;
-            count_time_for_bells = 0;
-        }
+//        else if (count_time_for_bells > time_for_bells) {
+//            sound.play(Sound.SOUND.BELLS);
+//            time_for_bells = 8;
+//            count_time_for_bells = 0;
+//        }
 
         return true;
     }

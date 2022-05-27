@@ -53,15 +53,14 @@ public class Sound {
             case TIBET:
                 // soundMelody[0].stop();
                 num = (int) (Math.random() * 12);
-                soundMelody[num].play(0.01f * setup.getVolume() * 0.4f);
+                soundMelody[num].play(0.01f * setup.getVolume() * 0.6f);
                 break;
             case BELLS:
-                // soundMelody[0].stop();
                 num = (int) (12 + Math.random() * 5);
                 soundMelody[num].play(0.01f * setup.getVolume() * 0.4f);
                 break;
             case MENU:
-                soundMelody[19].play(0.01f * setup.getVolume() * 0.7f);
+                soundMelody[19].play(0.01f * setup.getVolume() * 0.3f);
                 break;
         }
 
